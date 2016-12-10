@@ -13,13 +13,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import br.com.unicsul.planovoo.dao.CrudDAO;
+import br.com.unicsul.planovoo.dao.PlanetaDAO;
 import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.Results;
 import br.com.unicsul.planovoo.entity.Voo;
 import br.com.unicsul.planovoo.json.GsonHttpMessageConverter;
 
-public class CrudDAOImpl implements CrudDAO {
+public class PlanetasDAOImpl implements PlanetaDAO {
 	private static final String url = "http://swapi.co/api/planets/?format=json";
 	private List<Planetas>planetaVitidado;
 	

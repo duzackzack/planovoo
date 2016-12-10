@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.unicsul.planovoo.entity.Planetas;
 
-public interface CrudDAO {
+public interface PlanetaDAO {
 	public List<Planetas> listarDadosPlanetas();
 	public Planetas selecionarPlaneta(String name);
 	public boolean viagemAnterior(Planetas planeta);
