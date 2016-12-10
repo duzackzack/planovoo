@@ -15,17 +15,17 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.unicsul.planovoo.dao.PlanetaDAO;
 import br.com.unicsul.planovoo.entity.Planetas;
-import br.com.unicsul.planovoo.entity.Results;
+import br.com.unicsul.planovoo.entity.ResultsPlanetas;
 import br.com.unicsul.planovoo.entity.Voo;
 import br.com.unicsul.planovoo.json.GsonHttpMessageConverter;
 
 public class PlanetasDAOImpl implements PlanetaDAO {
 	private static final String url = "http://swapi.co/api/planets/?format=json";
-	private List<Planetas>planetaVitidado;
-	
+	private ConnectDAO data = new ConnectDAO();
+	private List<Planetas>planetaVisitado;
 	@Override
 	public List<Planetas> listarDadosPlanetas() {
-		Results result = result().getBody();
+		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas(url).getBody();
 		List<Planetas>lista = result.getResults();
 		if (lista != null && lista.size() > 0) {
 			return lista;
@@ -35,27 +35,10 @@ public class PlanetasDAOImpl implements PlanetaDAO {
 		}
 	}
 
-	public ResponseEntity<Results> result() {
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-		ResponseEntity<Results> responseEntity = restTemplate.exchange(url, HttpMethod.GET, getCabecario(),
-				Results.class);
-		return responseEntity;
-	}
-
-	public HttpEntity getCabecario() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		headers.add("user-agent",
-				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-		HttpEntity<?> requestEntity = new HttpEntity<Object>(headers);
-
-		return requestEntity;
-	}
-
+	
 	@Override
 	public Planetas selecionarPlaneta(String name) {
-		Results result = result().getBody();
+		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas(url).getBody();
 		List<Planetas>lista = result.getResults();
 		if (lista != null && lista.size() > 0) {
 			for(Planetas planeta : lista){
@@ -64,17 +47,17 @@ public class PlanetasDAOImpl implements PlanetaDAO {
 				}
 			}
 		}
-		return null;
+		return new Planetas();
 	}
 
 	@Override
 	public boolean viagemAnterior(Planetas planeta) {
-		if(this.planetaVitidado == null){
-			planetaVitidado = new ArrayList<Planetas>();
-			planetaVitidado.add(planeta);
+		if(this.planetaVisitado == null){
+			this.planetaVisitado = new ArrayList<Planetas>();
+			this.planetaVisitado.add(planeta);
 			return true;
 		}else{
-			if(planetaVitidado.contains(planeta)){
+			if(this.planetaVisitado.contains(planeta)){
 				return false;
 			}else{
 				return true;

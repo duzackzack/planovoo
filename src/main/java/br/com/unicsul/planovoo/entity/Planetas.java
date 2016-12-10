@@ -12,7 +12,7 @@ public class Planetas implements Serializable {
 
 	@JsonProperty("name")
 	private String name;
-
+	
 	@JsonProperty("rotation_period")
 	private String rotation_period;
 

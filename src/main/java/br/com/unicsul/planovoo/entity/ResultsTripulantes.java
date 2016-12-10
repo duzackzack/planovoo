@@ -8,11 +8,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Results implements Serializable{
+public class ResultsTripulantes implements Serializable{
 	private static final long serialVersionUID = 4196775882606636344L;
 
-	//@JsonProperty("results")
-	private List<Planetas>results;
+	private List<Tripulantes>results;
 	
 	
 	@JsonProperty("count")
@@ -25,11 +24,11 @@ public class Results implements Serializable{
 	@JsonProperty("previous")
 	private String previous;
 
-	public List<Planetas> getResults() {
+	public List<Tripulantes> getResults() {
 		return results;
 	}
 
-	public void setResults(List<Planetas> results) {
+	public void setResults(List<Tripulantes> results) {
 		this.results = results;
 	}
 
