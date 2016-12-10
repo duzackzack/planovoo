@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Tripulantes implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2785546929069900977L;
 
 	private String name;

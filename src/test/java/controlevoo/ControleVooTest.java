@@ -13,7 +13,7 @@ public class ControleVooTest {
 		 Planetas destino = new Planetas();
 		 
 		 origem.setName("Marte");
-		 destino.setName("Plutao");
+		 destino.setName("Jupiter");
 		 
 		 Assert.assertNotEquals(origem.getName(), destino.getName());
 	}

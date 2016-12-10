@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Nave implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7770515324021376636L;
 
 	private String name;
