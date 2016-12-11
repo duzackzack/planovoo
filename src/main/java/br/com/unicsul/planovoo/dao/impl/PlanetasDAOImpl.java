@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.unicsul.planovoo.dao.ConnectDAO;
 import br.com.unicsul.planovoo.dao.PlanetaDAO;
 import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.ResultsPlanetas;
@@ -20,25 +21,15 @@ import br.com.unicsul.planovoo.entity.Voo;
 import br.com.unicsul.planovoo.json.GsonHttpMessageConverter;
 
 public class PlanetasDAOImpl implements PlanetaDAO {
-	private static final String url = "http://swapi.co/api/planets/?format=json";
+	
 	private ConnectDAO data = new ConnectDAO();
-	private List<Planetas>planetaVisitado;
-	@Override
-	public List<Planetas> listarDadosPlanetas() {
-		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas(url).getBody();
-		List<Planetas>lista = result.getResults();
-		if (lista != null && lista.size() > 0) {
-			return lista;
-		} else {
-			List<Planetas> listas = new ArrayList<Planetas>();
-			return listas;
-		}
-	}
+	private List<Planetas>planetaVisitado=new ArrayList<Planetas>();
+	
 
 	
 	@Override
 	public Planetas selecionarPlaneta(String name) {
-		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas(url).getBody();
+		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas().getBody();
 		List<Planetas>lista = result.getResults();
 		if (lista != null && lista.size() > 0) {
 			for(Planetas planeta : lista){
@@ -60,8 +51,22 @@ public class PlanetasDAOImpl implements PlanetaDAO {
 			if(this.planetaVisitado.contains(planeta)){
 				return false;
 			}else{
+				this.planetaVisitado.add(planeta);
 				return true;
 			}
+		}
+	}
+
+
+	@Override
+	public List<Planetas> listarDadosPlanetas() {
+		ResultsPlanetas result = (ResultsPlanetas) data.resultPlanetas().getBody();
+		List<Planetas>lista = result.getResults();
+		if (lista != null && lista.size() > 0) {
+			return lista;
+		} else {
+			List<Planetas> listas = new ArrayList<Planetas>();
+			return listas;
 		}
 	}
 

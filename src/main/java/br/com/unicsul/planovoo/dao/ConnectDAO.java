@@ -1,4 +1,4 @@
-package br.com.unicsul.planovoo.dao.impl;
+package br.com.unicsul.planovoo.dao;
 
 import java.util.Arrays;
 
@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.unicsul.planovoo.constant.Constantes;
 import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.ResultsNave;
 import br.com.unicsul.planovoo.entity.ResultsPlanetas;
@@ -18,24 +19,24 @@ import br.com.unicsul.planovoo.json.GsonHttpMessageConverter;
 
 public class ConnectDAO {
 
-	public ResponseEntity<?> resultPlanetas(String url) {
+	public ResponseEntity<?> resultPlanetas() {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-		ResponseEntity<ResultsPlanetas> responseEntity = restTemplate.exchange(url, HttpMethod.GET, getCabecario(),ResultsPlanetas.class);
+		ResponseEntity<ResultsPlanetas> responseEntity = restTemplate.exchange(Constantes.urlPlaneta, HttpMethod.GET, getCabecario(),ResultsPlanetas.class);
 		return responseEntity;
 	}
 
-	public ResponseEntity<?> resultTripulantes(String url) {
+	public ResponseEntity<?> resultTripulantes() {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-		ResponseEntity<ResultsTripulantes> responseEntity = restTemplate.exchange(url, HttpMethod.GET, getCabecario(),ResultsTripulantes.class);
+		ResponseEntity<ResultsTripulantes> responseEntity = restTemplate.exchange(Constantes.urlTripulante, HttpMethod.GET, getCabecario(),ResultsTripulantes.class);
 		return responseEntity;
 	}
 	
-	public ResponseEntity<?> resultNave(String url) {
+	public ResponseEntity<?> resultNave() {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-		ResponseEntity<ResultsNave> responseEntity = restTemplate.exchange(url, HttpMethod.GET, getCabecario(),ResultsNave.class);
+		ResponseEntity<ResultsNave> responseEntity = restTemplate.exchange(Constantes.urlNave, HttpMethod.GET, getCabecario(),ResultsNave.class);
 		return responseEntity;
 	}
 	
