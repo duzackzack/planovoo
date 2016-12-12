@@ -84,12 +84,14 @@
 			<p:tab title="Tripulantes" id="tabTripulantes" >
 
 				<p:dataTable id="tripulante" var="tripu"
-					value="#{controleVoo.listarTripulantes}" widgetVar="tripuTable"
+					value="#{controleVoo.listarTripulantes}" 
+					widgetVar="tripuTable"
 					emptyMessage="Não ha dados selecionado"
 					filteredValue="#{controleVoo.pesquisarTripulante}" rows="10"
 					paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					rowsPerPageTemplate="5,10,15" 
+					selectionMode="multiple"  
 					selection="#{controleVoo.tripulanteSelected}"
 					rowKey="#{tripu.name}">
 
@@ -113,8 +115,6 @@
 			</p:tab>
 			
 			<p:tab title="Plano Voo" id="planoVooOk" >
-				<p:commandButton title="Liberar Plano de Voo" actionListener="#{controleVoo.liberarVoo}" update=":formPadrao:msg"/>
-
 			</p:tab>
 		</p:tabView>
 	</h:form>

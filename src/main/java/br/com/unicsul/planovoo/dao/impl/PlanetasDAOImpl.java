@@ -1,24 +1,12 @@
 package br.com.unicsul.planovoo.dao.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import javax.xml.bind.JAXBException;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.unicsul.planovoo.dao.ConnectDAO;
 import br.com.unicsul.planovoo.dao.PlanetaDAO;
 import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.ResultsPlanetas;
-import br.com.unicsul.planovoo.entity.Voo;
-import br.com.unicsul.planovoo.json.GsonHttpMessageConverter;
 
 public class PlanetasDAOImpl implements PlanetaDAO {
 	
