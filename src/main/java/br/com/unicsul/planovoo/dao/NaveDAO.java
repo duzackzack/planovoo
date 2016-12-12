@@ -7,6 +7,5 @@ import br.com.unicsul.planovoo.entity.Nave;
 public interface NaveDAO {
    
 	public List<Nave>listarNaves();
-	public Nave listarNaves(String nome);
 	
 }

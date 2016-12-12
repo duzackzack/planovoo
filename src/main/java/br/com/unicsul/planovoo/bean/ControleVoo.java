@@ -63,21 +63,6 @@ public class ControleVoo {
 		
 	}
 
-	public boolean isAtivar() {
-		if (tripulanteSelected != null && tripulanteSelected.size() > 0) {
-			return false;
-		}
-
-		if (naveSelected != null && naveSelected.getName() != null) {
-			return false;
-		}
-
-		if (planetaSelected != null && planetaSelected.getName() != null) {
-			return false;
-		}
-		return ativar;
-	}
-
 	public boolean checarViagemAnterior(Planetas planeta){
 		boolean qtdePassageiro = checarQtdePassageiro(this.naveSelected,this.tripulanteSelected.size());
 		if(planeta != null){

@@ -7,6 +7,5 @@ import br.com.unicsul.planovoo.entity.Tripulantes;
 public interface TripulantesDAO {
    
 	public List<Tripulantes>listarTripulantes();
-	public Tripulantes listarTripulantes(String nome);
 	
 }

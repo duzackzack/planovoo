@@ -6,6 +6,4 @@ import br.com.unicsul.planovoo.entity.Planetas;
 
 public interface PlanetaDAO {
 	public List<Planetas> listarDadosPlanetas();
-	public Planetas selecionarPlaneta(String name);
-	public boolean viagemAnterior(Planetas planeta);
 }

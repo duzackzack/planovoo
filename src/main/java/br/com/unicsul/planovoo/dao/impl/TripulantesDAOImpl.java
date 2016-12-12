@@ -24,18 +24,6 @@ public class TripulantesDAOImpl implements TripulantesDAO{
 			}
 	}
 
-	@Override
-	public Tripulantes listarTripulantes(String nome) {
-		ResultsTripulantes result = (ResultsTripulantes) data.resultTripulantes().getBody();
-		List<Tripulantes>lista = result.getResults();
-		if (lista != null && lista.size() > 0) {
-			for(Tripulantes tripulante : lista){
-				if(tripulante.getName().equals(nome)){
-					return tripulante;
-				}
-			}
-		}
-		return new Tripulantes();
-	}
+	
 
 }

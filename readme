@@ -1,1 +1,22 @@
-1º 
+1º https://github.com/duzackzack/planovoo.git
+2º importar o projeto em formato mavem para o eclipse
+3º realizar update
+4º realizar o clean/ instal
+5º rodar o mvn test
+
+6º  para instalar a aplicacao
+apos o install do mave compiar o ControleVoo.war para dentro do seu container
+
+7º na execucao  o sistema esta implementado com JSF 2.2 / primefaces 6 / java 8.0.51 /maven / junit / gson / resttemplate
+
+os dados estão sendo consumido diretamente da api, ocasiconando uma pouco de lentidao  e para testes deverara estar conectado na internet
+
+
+
+sistema esta dividido em 4 abas sendo elas
+1 Planetas onde é listado todos os planetas para viagem disponiveis, podendo ser filtrado por todos os campos disponiveis na tabela
+2 nave seguindo o mesmo padrao acima
+3 os tripulantes seguindo o padrao de filtros dos itens anteriores,  para rodar a aplicação selecione os itens na tabela e aguarde um instante o item 
+selecionado ira entrar para a lista de componentes do jsf,  lembrando que é posivel selecionar 1 planeta por vez, 1 planeta por vez e diversos tripulantes
+apos as 3 abas terem sido selecionadas o sistema pega estas 3 informacoes e valida a quantidade de passageiro e a qtde na nave, veifica tambem se o ultimo pais  visitado esta selecionado
+caso isso ocorra ele exibirar uma mensagem informando que  nao esta autorizado a viagem.

@@ -10,17 +10,115 @@
 
 </h:head>
 <h:body>
-	<h:form>
-		<center>
-		<h:panelGrid>
-		<center>
-		   <p:fieldset legend="Painel Central" >
-		   </p:fieldset>
-		 </center>
-		</h:panelGrid>
-	</center>
 
+	<h:form id="formPadrao">
+		<p:growl id="msgs" showDetail="true" />
+		<p:messages id="msg" showDetail="true" />
+		<p:tabView id="idTabview">
+			<p:tab title="Planetas" id="tabPlanetas">
+				<p:dataTable id="dataPlanetas" var="planeta"
+					value="#{controleVoo.listarPlanetas}" widgetVar="planetaTable"
+					emptyMessage="Não ha dados selecionado"
+					filteredValue="#{controleVoo.pesquisarPlaneta}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					selection="#{controleVoo.planetaSelected}" rowKey="#{planeta.name}">
+					
+					<p:column filterBy="#{planeta.name}" style="width:300px"
+						headerText="Planeta" filterMatchMode="contains">
+						<h:outputText value="#{planeta.name}" />
+					</p:column>
+					<p:column filterBy="#{planeta.diameter}" style="width:100px"
+						headerText="Diametro" filterMatchMode="contains">
+						<h:outputText value="#{planeta.diameter}" />
+					</p:column>
+					<p:column filterBy="#{planeta.climate}" style="width:100px"
+						headerText="Clima" filterMatchMode="contains">
+						<h:outputText value="#{planeta.climate}" />
+					</p:column>
+					<p:column filterBy="#{planeta.terrain}" headerText="Terreno"
+						filterMatchMode="contains">
+						<h:outputText value="#{planeta.terrain}" />
+					</p:column>
+					<p:column filterBy="#{planeta.population}" style="width:100px"
+						headerText="População" filterMatchMode="contains">
+						<h:outputText value="#{planeta.population}" />
+					</p:column>
+					<p:ajax event="rowSelect" 
+						 listener="#{controleVoo.onRowPlanetasSelect}"
+						  update=":formPadrao:msgs"/>
+				</p:dataTable>
+			</p:tab>
+			
+			<p:tab title="Nave" >
+			  	<p:dataTable id="dataNave" var="nave"
+					value="#{controleVoo.listarNave}" widgetVar="naveTable"
+					emptyMessage="Não ha dados selecionado"
+					filteredValue="#{controleVoo.pesquisarNave}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" selectionMode="single"
+					selection="#{controleVoo.naveSelected}" rowKey="#{nave.name}">
+
+
+					<p:column filterBy="#{nave.name}" style="width:300px"
+						headerText="Nome" filterMatchMode="contains">
+						<h:outputText value="#{nave.name}" />
+					</p:column>
+					<p:column filterBy="#{nave.modelo}" style="width:100px"
+						headerText="Modelo" filterMatchMode="contains">
+						<h:outputText value="#{nave.modelo}" />
+					</p:column>
+					<p:column filterBy="#{nave.passageiros}" style="width:100px"
+						headerText="Passageiro" filterMatchMode="contains">
+						<h:outputText value="#{nave.passageiros}" />
+					</p:column>
+					<p:ajax event="rowSelect" 
+						 listener="#{controleVoo.onRowNaveSelect}"
+						  update=" :formPadrao:msgs"/>
+
+				</p:dataTable>
+
+			</p:tab>
+			<p:tab title="Tripulantes" id="tabTripulantes" >
+
+				<p:dataTable id="tripulante" var="tripu"
+					value="#{controleVoo.listarTripulantes}" 
+					widgetVar="tripuTable"
+					emptyMessage="Não ha dados selecionado"
+					filteredValue="#{controleVoo.pesquisarTripulante}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" 
+					selectionMode="multiple"  
+					selection="#{controleVoo.tripulanteSelected}"
+					rowKey="#{tripu.name}">
+
+
+
+					<p:column filterBy="#{tripu.name}" style="width:300px"
+						headerText="Nome" filterMatchMode="contains">
+
+						<h:outputText value="#{tripu.name}" />
+					</p:column>
+					<p:column filterBy="#{tripu.gender}" style="width:100px"
+						headerText="Modelo" filterMatchMode="contains">
+						<h:outputText value="#{tripu.gender}" />
+					</p:column>
+					<p:ajax event="rowSelect" 
+						 listener="#{controleVoo.onRowSelect}"
+						  update=" :formPadrao:msgs"/>
+
+				</p:dataTable>
+
+			</p:tab>
+			
+			<p:tab title="Plano Voo" id="planoVooOk" >
+			</p:tab>
+		</p:tabView>
 	</h:form>
+	
 </h:body>
 
 </html>

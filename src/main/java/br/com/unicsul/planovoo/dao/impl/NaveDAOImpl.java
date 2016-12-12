@@ -27,19 +27,5 @@ public class NaveDAOImpl implements NaveDAO{
 			}
 	}
 
-	@Override
-	public Nave listarNaves(String nome) {
-		ResultsNave result = (ResultsNave) data.resultNave().getBody();
-		List<Nave>lista = result.getResults();
-		if (lista != null && lista.size() > 0) {
-			for(Nave nave : lista){
-				if(nave.getName().equals(nome)){
-					return nave;
-				}
-			}
-		}
-
-		return new Nave();
-	}
 
 }
