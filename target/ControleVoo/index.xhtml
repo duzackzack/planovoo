@@ -14,6 +14,8 @@
 	<h:form id="formPadrao">
 		<p:growl id="msgs" showDetail="true" />
 		<p:messages id="msg" showDetail="true" />
+	
+	
 		<p:tabView id="idTabview">
 			<p:tab title="Planetas" id="tabPlanetas">
 				<p:dataTable id="dataPlanetas" var="planeta"
@@ -51,7 +53,7 @@
 				</p:dataTable>
 			</p:tab>
 			
-			<p:tab title="Nave" >
+			<p:tab title="Nave" id="naveTab">
 			  	<p:dataTable id="dataNave" var="nave"
 					value="#{controleVoo.listarNave}" widgetVar="naveTable"
 					emptyMessage="Não ha dados selecionado"
@@ -115,8 +117,69 @@
 			</p:tab>
 			
 			<p:tab title="Plano Voo" id="planoVooOk" >
+			
+			<p:commandButton title="Liberar Plano de Voo" actionListener="#{controleVoo.liberarVoo}"  update=":formPadrao:msg :formPadrao:planovoo1"  />
+				
+	
+				
 			</p:tab>
 		</p:tabView>
+	<p:outputPanel id="planovoo1">
+		<p:dataTable var="plano" value="#{controleVoo.listaPlanoVoo}" >
+        <f:facet name="header">
+            Plano de Voo
+        </f:facet>
+        <p:column style="width:16px">
+            <p:rowToggler />
+        </p:column>
+        <p:column headerText="Nome">
+            <h:outputText value="#{plano.nave.name}" />
+        </p:column>
+        
+        <p:column headerText="Modeo">
+            <h:outputText value="#{plano.nave.modelo}" />
+        </p:column>
+        
+        <p:column headerText="Passageiroa">
+            <h:outputText value="#{plano.nave.passageiros}" />
+        </p:column>
+        
+        
+        <p:rowExpansion>
+        
+            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+        
+                <h:outputText value="Planeta:" />
+                <h:outputText value="#{plano.planetas.name}" />
+
+
+				<h:outputText value="Diametro" />
+                <h:outputText value="#{plano.planetas.diameter}" />
+
+				<h:outputText value="Clima" />
+                <h:outputText value="#{plano.planetas.climate}" />
+
+				<h:outputText value="Terreno" />
+                <h:outputText value="#{plano.planetas.terrain}" />
+
+				<h:outputText value="Populacao" />
+                <h:outputText value="#{plano.planetas.population}" />
+				
+            </p:panelGrid>
+				        <h:outputText value="Tripulantes" />
+        
+				<p:dataTable var="trip" value="#{plano.tripulantes}">
+					<p:column headerText="nome">
+           				 <h:outputText value="#{trip.name}" />
+        			</p:column>
+        
+        		<p:column headerText="Sexo">
+            		<h:outputText value="#{trip.gender}" />
+        		</p:column>		
+				</p:dataTable>
+        </p:rowExpansion>
+    </p:dataTable>
+	</p:outputPanel>
 	</h:form>
 	
 </h:body>

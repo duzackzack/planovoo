@@ -16,7 +16,7 @@ public class Nave implements Serializable {
 	@JsonProperty("model")
 	private String modelo;
 	@JsonProperty("passengers")
-	private int passageiros;
+	private int passengers;
 	@JsonProperty("manufacturer")
 	private String manufacturer;
 	@JsonProperty("cost_in_credits")
@@ -67,12 +67,12 @@ public class Nave implements Serializable {
 		this.modelo = modelo;
 	}
 
-	public int getPassageiros() {
-		return passageiros;
+	public int getPassengers() {
+		return passengers;
 	}
 
-	public void setPassageiros(int passageiros) {
-		this.passageiros = passageiros;
+	public void setPassengers(int passengers) {
+		this.passengers = passengers;
 	}
 
 	public String getManufacturer() {

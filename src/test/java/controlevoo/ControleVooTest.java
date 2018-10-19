@@ -26,9 +26,9 @@ public class ControleVooTest {
 	@Test
 	public void verificaQtdePassageiro() {
 		Nave nave = new Nave();
-		nave.setPassageiros(9);
+		nave.setPassengers(9);
 		int qtdePassageiro = 4;
-		Assert.assertEquals(true, nave.getPassageiros() >= qtdePassageiro);
+		Assert.assertEquals(true, nave.getPassengers() >= qtdePassageiro);
 	}
 
 	@Test

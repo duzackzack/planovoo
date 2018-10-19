@@ -19,7 +19,7 @@ import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.PlanoVoo;
 import br.com.unicsul.planovoo.entity.Tripulantes;
 
-@ManagedBean(name = "controleVoo")
+@ManagedBean
 @RequestScoped
 public class ControleVoo {
 
@@ -44,7 +44,7 @@ public class ControleVoo {
 		listarTripulantes = (List<Tripulantes>) tripulacaoDAO.listarTripulantes();
 		listarPlanetas = (List<Planetas>) planetaDao.listarDadosPlanetas();
 		listarNave = (List<Nave>) naveDao.listarNaves();
-		
+		System.out.println("ok");
 		}
 
 	public void onRowSelect(SelectEvent event) {
@@ -211,7 +211,7 @@ public class ControleVoo {
 	}
 
 	private boolean checarQtdePassageiro(Nave naveSelected2, int qtdeTripulante) {
-		if(naveSelected2.getPassageiros() < qtdeTripulante){
+		if(naveSelected2.getPassengers() < qtdeTripulante){
 			return false;
 		}else{
 			return true;

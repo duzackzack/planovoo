@@ -3,15 +3,13 @@ package br.com.unicsul.planovoo.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.unicsul.planovoo.dao.ConnectDAO;
+import br.com.unicsul.planovoo.dao.ConnectTripulantesDAO;
 import br.com.unicsul.planovoo.dao.TripulantesDAO;
-import br.com.unicsul.planovoo.entity.Nave;
-import br.com.unicsul.planovoo.entity.ResultsNave;
 import br.com.unicsul.planovoo.entity.ResultsTripulantes;
 import br.com.unicsul.planovoo.entity.Tripulantes;
 
 public class TripulantesDAOImpl implements TripulantesDAO{
-	ConnectDAO data = new ConnectDAO();
+	ConnectTripulantesDAO data = new ConnectTripulantesDAO();
 	@Override
 	public List<Tripulantes> listarTripulantes() {
 			ResultsTripulantes result = (ResultsTripulantes) data.resultTripulantes().getBody();

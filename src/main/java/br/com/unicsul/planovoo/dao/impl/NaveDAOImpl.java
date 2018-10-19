@@ -3,18 +3,13 @@ package br.com.unicsul.planovoo.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.unicsul.planovoo.dao.ConnectDAO;
+import br.com.unicsul.planovoo.dao.ConnectNavesDAO;
 import br.com.unicsul.planovoo.dao.NaveDAO;
-import br.com.unicsul.planovoo.dao.TripulantesDAO;
 import br.com.unicsul.planovoo.entity.Nave;
-import br.com.unicsul.planovoo.entity.Planetas;
 import br.com.unicsul.planovoo.entity.ResultsNave;
-import br.com.unicsul.planovoo.entity.ResultsPlanetas;
-import br.com.unicsul.planovoo.entity.ResultsTripulantes;
-import br.com.unicsul.planovoo.entity.Tripulantes;
 
 public class NaveDAOImpl implements NaveDAO{
-	ConnectDAO data = new ConnectDAO();
+	ConnectNavesDAO data = new ConnectNavesDAO();
 	@Override
 	public List<Nave> listarNaves() {
 			ResultsNave result = (ResultsNave) data.resultNave().getBody();
