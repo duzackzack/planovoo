@@ -72,9 +72,9 @@
 						headerText="Modelo" filterMatchMode="contains">
 						<h:outputText value="#{nave.modelo}" />
 					</p:column>
-					<p:column filterBy="#{nave.passageiros}" style="width:100px"
+					<p:column filterBy="#{nave.passengers}" style="width:100px"
 						headerText="Passageiro" filterMatchMode="contains">
-						<h:outputText value="#{nave.passageiros}" />
+						<h:outputText value="#{nave.passengers}" />
 					</p:column>
 					<p:ajax event="rowSelect" 
 						 listener="#{controleVoo.onRowNaveSelect}"
@@ -140,8 +140,8 @@
             <h:outputText value="#{plano.nave.modelo}" />
         </p:column>
         
-        <p:column headerText="Passageiroa">
-            <h:outputText value="#{plano.nave.passageiros}" />
+        <p:column headerText="Passageiros">
+            <h:outputText value="#{plano.nave.passengers}" />
         </p:column>
         
         
